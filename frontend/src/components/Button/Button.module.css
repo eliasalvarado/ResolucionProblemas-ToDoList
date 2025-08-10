@@ -1,0 +1,35 @@
+.button{
+    border-radius: 8px;
+    padding: 10px 15px;
+    outline: none;
+    border: none;
+    font-family: helvetica;
+    font-size: 16px;
+    cursor: pointer;
+}
+  
+.button[disabled], .button.secondary[disabled] {
+    background-color: #DDD;
+    color: #333;
+    cursor: not-allowed;
+    border: none;
+}
+
+.button:focus{
+    outline: none;
+}
+
+.button:active{
+    background-color: #2f3b4c;
+    opacity: 1;
+}
+
+.button{
+    background-color: #1C2532;
+    color: white;
+    font-weight: bold;
+}
+
+.button:hover{
+    opacity: 0.9;
+}
