@@ -1,0 +1,99 @@
+.popUp {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  background-color: rgba(0, 0, 0, 0.5);
+  top: 0;
+  left: 0;
+  animation: showBackground 0.3s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  color: black;
+}
+
+@keyframes showBackground {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.popUpBody {
+  width: 100%;
+  max-width: 600px;
+  border-radius: 10px;
+  position: relative;
+  overflow-x: hidden;
+  overflow-y: auto;
+  animation: showPopUp 0.5s;
+  box-sizing: border-box;
+  max-height: 90vh;
+  padding: 10px;
+}
+
+.popUpHeader {
+  width: 100%;
+  height: 20px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-bottom: 10px;
+  background-color: transparent;
+}
+
+.xIcon {
+  background-image: url(../../assets/x-icon.svg);
+  background-size: 15px;
+  background-position: center;
+  border-radius: 5px;
+  background-repeat: no-repeat;
+  width: 10px;
+  height: 10px;
+  cursor: pointer;
+  position: absolute;
+  top: -1px;
+  right: 10px;
+  background-color: #f0f4ff;
+  padding: 10px;
+}
+
+.popUpBodyContainer {
+  padding: 20px;
+  overflow-y: auto;
+  background-color: #ecedf6;
+  border-radius: 5px;
+}
+
+@keyframes showPopUp {
+  from {
+    opacity: 0;
+    transform: translateY(-15px);
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@media only screen and (max-width: 530px) {
+  .popUpBody {
+    width: 95%;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+.popUpFadeOut {
+  animation: fadeOut 1s forwards;
+}

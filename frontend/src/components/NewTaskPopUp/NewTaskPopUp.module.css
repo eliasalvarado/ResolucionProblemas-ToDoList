@@ -1,0 +1,63 @@
+.popupContainer {
+  width: 100%;
+  max-width: 600px;
+  margin: auto;
+}
+
+.popupHeader {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.formGroup {
+  margin-bottom: 15px;
+}
+
+.label {
+  display: block;
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 5px;
+}
+
+.input,
+.select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+  color: #333;
+  background-color: #fff;
+}
+
+.input {
+  max-width: calc(100% - 22px);
+}
+
+.buttonGroup {
+  display: flex;
+  margin-top: 50px;
+}
+
+.button {
+  padding: 10px 20px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.saveButton {
+  background-color: #4a90e2;
+  color: #fff;
+}
+
+.cancelButton {
+  background-color: #ccc;
+  color: #333;
+}
