@@ -5,12 +5,14 @@ import useFetch from '../../hooks/useFetch';
 import { FaTrash } from 'react-icons/fa';
 import { MdModeEdit } from "react-icons/md";
 import EditTaskPopUp from '../EditTaskPopUp/';
+import DeleteTaskPopUp from '../DeleteTaskPopUp/DeleteTaskPopUp';
 import styles from './ToDoList.module.css';
 
 function ToDoList({ filter, refresh }) {
   const { callFetch, result, error, loading } = useFetch();
   const [tasks, setTasks] = useState([]);
   const [editingTask, setEditingTask] = useState(null);
+  const [deletingTask, setDeletingTask] = useState(null);
 
   const fetchToDoList = useCallback(() => {
     callFetch({ uri: `${serverHost}/toDoList` });
@@ -77,8 +79,24 @@ function ToDoList({ filter, refresh }) {
     setEditingTask(null);
   };
 
+  const closeDeletePopUp = () => {
+    setDeletingTask(null);
+  };
+
+  const confirmDeleteTask = () => {
+    deleteTask(deletingTask.id);
+    closeDeletePopUp();
+  };
+
   return (
     <div>
+      {deletingTask && (
+        <DeleteTaskPopUp
+          taskTitle={deletingTask.title}
+          close={closeDeletePopUp}
+          confirm={confirmDeleteTask}
+        />
+      )}
       {editingTask && (
         <EditTaskPopUp
           task={editingTask}
@@ -104,7 +122,7 @@ function ToDoList({ filter, refresh }) {
                   <span className={styles.taskDate}>{getDateString(task.createdAt)}</span>
                 </div>
                 <div className={styles.taskActions}>
-                  <button className={styles.deleteButton} onClick={() => deleteTask(task.id)}><FaTrash /></button>
+                  <button className={styles.deleteButton} onClick={() => setDeletingTask(task)}><FaTrash /></button>
                   <button className={styles.editButton} onClick={() => setEditingTask(task)}><MdModeEdit /></button>
                 </div>
               </div>
