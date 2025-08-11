@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { serverHost } from '../../config'
 import useFetch from '../../hooks/useFetch'
 import PopUp from '../PopUp/PopUp'
+import Spinner from '../Spinner/Spinner'
 import styles from './NewTaskPopUp.module.css'
 
 function NewTaskPopUp({ close }) {
@@ -52,24 +53,27 @@ function NewTaskPopUp({ close }) {
               <option value="true">Complete</option>
             </select>
           </div>
-          {loading && <p>Saving...</p>}
           {error && <p>Error: {error.message}</p>}
           <div className={styles.buttonGroup}>
-            <button
-              type="submit"
-              disabled={loading}
-              className={`${styles.button} ${styles.saveButton}`}
-            >
-              AddTask
-            </button>
-            <button
-              type="button"
-              onClick={close}
-              disabled={loading}
-              className={`${styles.button} ${styles.cancelButton}`}
-            >
-              Cancel
-            </button>
+            {loading ? <Spinner /> : (
+              <>
+                <button
+                  type="submit"
+                  disabled={loading}
+                  className={`${styles.button} ${styles.saveButton}`}
+                >
+                  AddTask
+                </button>
+                <button
+                  type="button"
+                  onClick={close}
+                  disabled={loading}
+                  className={`${styles.button} ${styles.cancelButton}`}
+                >
+                  Cancel
+                </button>
+              </>
+            )}
           </div>
         </form>
       </div>

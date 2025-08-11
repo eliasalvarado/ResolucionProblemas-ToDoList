@@ -1,4 +1,4 @@
-.todoList {
+.todoList, .todoListNoTasks {
   margin: 20px auto;
   width: 100%;
   background-color: #ecedf6;
@@ -13,6 +13,11 @@
   background-color: #fff;
   border-radius: 5px;
   margin: 10px 0;
+}
+
+.completed {
+  text-decoration: line-through;
+  opacity: 0.6;
 }
 
 .checkbox {
@@ -64,38 +69,33 @@
   gap: 10px;
 }
 
-.editButton {
+.editButton, .deleteButton {
   padding: 5px 10px;
-  font-size: 0.9rem;
-  background-color: #4a90e2;
-  color: white;
+  font-size: 1rem;
+  background-color: #efefef;
+  color: #585858;
   border: none;
   border-radius: 5px;
   cursor: pointer;
 }
 
-.editButton:hover {
-  background-color: #357ab8;
-}
-
-.deleteButton {
-  padding: 5px 10px;
-  font-size: 0.9rem;
-  background-color: #e74c3c;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.deleteButton:hover {
-  background-color: #c0392b;
+.editButton:hover, .deleteButton:hover {
+  background-color: #d0d0d0;
 }
 
 /* Vista sin tareas */
 .noTasks {
+  background-color: #dee0e2;
   text-align: center;
-  font-size: 1.2rem;
+  font-size: 1rem;
   color: #666;
-  margin-top: 20px;
+  width: fit-content;
+  padding: 5px;
+  border-radius: 10px;
+}
+
+.todoListNoTasks {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

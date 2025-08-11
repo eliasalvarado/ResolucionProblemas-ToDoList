@@ -28,7 +28,7 @@ function Home() {
         <div className={styles.header}>
           <button className={styles.addButton} onClick={handleOpenPopUp}>Add Task</button>
           <select className={styles.filter} value={filter} onChange={handleFilterChange}>
-            <option value="All">All</option>
+            <option value="All">ALL</option>
             <option value="Complete">Complete</option>
             <option value="Incomplete">Incomplete</option>
           </select>
