@@ -18,8 +18,8 @@ app.get("/toDoList", async (req, res) => {
 
 // Crear tarea
 app.post("/toDoList", async (req, res) => {
-  const { title } = req.body;
-  const todo = await prisma.todo.create({ data: { title } });
+  const { title, completed } = req.body;
+  const todo = await prisma.todo.create({ data: { title, completed } });
   res.json(todo);
 });
 
