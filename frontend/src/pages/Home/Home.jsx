@@ -6,6 +6,7 @@ import styles from './Home.module.css'
 function Home() {
   const [showPopUp, setShowPopUp] = useState(false)
   const [filter, setFilter] = useState('All')
+  const [refresh, setRefresh] = useState(false)
 
   const handleOpenPopUp = () => {
     setShowPopUp(true)
@@ -13,6 +14,7 @@ function Home() {
 
   const handleClosePopUp = () => {
     setShowPopUp(false)
+    setRefresh(!refresh)
   }
 
   const handleFilterChange = (e) => {
@@ -31,7 +33,7 @@ function Home() {
             <option value="Incomplete">Incomplete</option>
           </select>
         </div>
-        <ToDoList filter={filter} />
+        <ToDoList filter={filter} refresh={refresh} />
       </div>
       {showPopUp && (
         <NewTaskPopUp close={handleClosePopUp} />

@@ -9,8 +9,6 @@ function useApiFetch() {
       signal,
     });
 
-    console.log('API Fetch:', uri);
-
     if (!reply.ok) {
       throw reply;
     }
