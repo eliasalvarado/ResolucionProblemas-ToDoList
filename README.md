@@ -31,11 +31,21 @@ cd ResolucionProblemas-ToDoList
 ```
 
 ### 2. Configurar Variables de Entorno
-Crea un archivo `.env` dentro de la carpeta `backend` y define las siguientes variables:
+Crea un archivo `.env`, basado en el `backend/.env.example` de este repositorio, dentro de la carpeta `backend` y define las siguientes variables:
 
 ```env
 DATABASE_URL=postgresql://postgres:postgres@db:5432/tododb?schema=public
+PORT=400
 ```
+
+Crea un archivo `.env`, basado en el `frontend/.env.example` de este repositorio, dentro de la carpeta `frontend` y define las siguientes variables:
+
+```env
+VITE_SERVERHOST=http://localhost:4000
+```
+
+> [!IMPORTANT]
+> Recuerda agregar la palabra 'VITE_' al inicio de la variable
 
 ### 3. Construir y Ejecutar los Contenedores
 Utiliza Docker Compose para construir y ejecutar los contenedores del frontend y backend:
@@ -62,6 +72,7 @@ ResolucionProblemas-ToDoList/
 │   ├── prisma/
 │   │   └── schema.prisma
 │   ├── Dockerfile
+│   ├── .env
 │   └── package.json
 ├── frontend/
 │   ├── src/
@@ -72,6 +83,7 @@ ResolucionProblemas-ToDoList/
 │   │   └── main.jsx
 │   ├── public/
 │   ├── Dockerfile
+│   ├── .env
 │   ├── package.json
 │   └── vite.config.js
 ├── docker-compose.yml
