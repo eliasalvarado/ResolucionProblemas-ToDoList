@@ -2,10 +2,11 @@ import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
 import { PrismaClient } from "../generated/prisma/index.js";
+import { withAccelerate } from '@prisma/extension-accelerate'
 
 dotenv.config();
 const app = express();
-const prisma = new PrismaClient();
+const prisma = new PrismaClient().$extends(withAccelerate())
 
 app.use(cors());
 app.use(express.json());
