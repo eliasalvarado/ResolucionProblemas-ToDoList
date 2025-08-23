@@ -1,6 +1,5 @@
 .todoList, .todoListNoTasks {
   margin: 20px auto;
-  width: 100%;
   background-color: #ecedf6;
   border-radius: 10px;
   padding: 10px 20px;
@@ -24,15 +23,12 @@
   appearance: none;
   width: 30px;
   height: 30px;
-  max-width: 30px;
-  max-height: 30px;
-  min-width: 15px;
-  min-height: 15px;
   border-radius: 4px;
   background-color: #efefef;
   display: flex;
   justify-content: center;
   align-items: center;
+  font-size: 1.2em;
 }
 
 .checkbox:checked {
@@ -43,7 +39,7 @@
 .checkbox:checked::before {
   content: '\2713';
   color: #fff;
-  font-size: 20px;
+  font-size: 0.8em;
   font-weight: bold;
 }
 
@@ -83,8 +79,8 @@
   background-color: #d0d0d0;
 }
 
-/* Vista sin tareas */
-.noTasks {
+/* Vista sin tareas o con error */
+.noTasks, .error {
   background-color: #dee0e2;
   text-align: center;
   font-size: 1rem;
@@ -94,8 +90,80 @@
   border-radius: 10px;
 }
 
+.error {
+  color: red;
+}
+
 .todoListNoTasks {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+@media only screen and (max-width: 768px) {
+  .todoList, .todoListNoTasks {
+    width: 90%;
+    padding: 10px;
+  }
+
+  .todoItem {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px;
+  }
+
+  .taskInfo {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .taskActions {
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  .editButton, .deleteButton {
+    font-size: 0.9rem;
+    padding: 5px;
+  }
+
+  .checkbox {
+    width: 25px;
+    height: 25px;
+    font-size: 1em;
+    margin-left: 0;
+  }
+
+  .checkbox:checked::before {
+    font-size: 0.7em;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .todoItem {
+    padding: 8px;
+  }
+
+  .taskTitle {
+    font-size: 0.9rem;
+  }
+
+  .taskDate {
+    font-size: 0.7rem;
+  }
+
+  .editButton, .deleteButton {
+    font-size: 0.8rem;
+    padding: 4px;
+  }
+
+  .checkbox {
+    width: 20px;
+    height: 20px;
+    font-size: 0.9em;
+  }
+
+  .checkbox:checked::before {
+    font-size: 0.6em;
+  }
 }

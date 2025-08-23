@@ -103,33 +103,36 @@ function ToDoList({ filter, refresh }) {
           close={closeEditPopUp}
         />
       )}
-      {error && <p>Error: {error.message}</p>}
-      {loading ? <Spinner /> : (
-        <ul className={filteredTasks.length === 0 ? styles.todoListNoTasks : styles.todoList}>
-          {filteredTasks.length === 0 ? (
-            <div className={styles.noTasks}>No Todo Found</div>
-          ) : (
-            filteredTasks.map((task) => (
-              <div key={task.id} className={styles.todoItem}>
-                <input
-                  type="checkbox"
-                  className={styles.checkbox}
-                  checked={task.completed}
-                  onChange={() => updateTaskStatus(task.id, !task.completed)}
-                />
-                <div className={styles.taskInfo}>
-                  <span className={`${styles.taskTitle} ${task.completed ? styles.completed : ''}`}>{task.title}</span>
-                  <span className={styles.taskDate}>{getDateString(task.createdAt)}</span>
-                </div>
-                <div className={styles.taskActions}>
-                  <button className={styles.deleteButton} onClick={() => setDeletingTask(task)}><FaTrash /></button>
-                  <button className={styles.editButton} onClick={() => setEditingTask(task)}><MdModeEdit /></button>
-                </div>
+      <ul className={filteredTasks.length === 0 ? styles.todoListNoTasks : styles.todoList}>
+        {loading ? (
+          <Spinner />
+        ) : error ? (
+          <div className={styles.error}>
+            Error: {error.message}
+          </div>
+        ) : filteredTasks.length === 0 ? (
+          <div className={styles.noTasks}>No Todo Found</div>
+        ) : (
+          filteredTasks.map((task) => (
+            <div key={task.id} className={styles.todoItem}>
+              <input
+                type="checkbox"
+                className={styles.checkbox}
+                checked={task.completed}
+                onChange={() => updateTaskStatus(task.id, !task.completed)}
+              />
+              <div className={styles.taskInfo}>
+                <span className={`${styles.taskTitle} ${task.completed ? styles.completed : ''}`}>{task.title}</span>
+                <span className={styles.taskDate}>{getDateString(task.createdAt)}</span>
               </div>
-            ))
-          )}
-        </ul>
-      )}
+              <div className={styles.taskActions}>
+                <button className={styles.deleteButton} onClick={() => setDeletingTask(task)}><FaTrash /></button>
+                <button className={styles.editButton} onClick={() => setEditingTask(task)}><MdModeEdit /></button>
+              </div>
+            </div>
+          ))
+        )}
+      </ul>
     </div>
   );
 }
