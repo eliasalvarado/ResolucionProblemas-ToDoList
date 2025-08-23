@@ -1,5 +1,6 @@
 import React, { useState, useRef } from 'react';
 import PropTypes from 'prop-types';
+import { MdOutlineClose } from "react-icons/md";
 import styles from './PopUp.module.css';
 
 function PopUp({
@@ -8,7 +9,7 @@ function PopUp({
   const refPopUp = useRef();
   const [isClosing, setIsClosing] = useState(false);
 
-  const handleClose = () => {
+  const handleclose = () => {
     setIsClosing(true);
     setTimeout(() => {
       close();
@@ -20,7 +21,7 @@ function PopUp({
       e.stopPropagation();
 
       if (closeWithBackground) {
-        handleClose();
+        handleclose();
       }
     }
   };
@@ -28,7 +29,7 @@ function PopUp({
   const handleCloseWithButton = (e) => {
     e.stopPropagation();
     if (closeButton) {
-      handleClose();
+      handleclose();
     }
   };
 
@@ -50,13 +51,13 @@ function PopUp({
               onKeyUp={handleCloseWithButton}
               role="button"
               tabIndex="0"
-            />
+            >
+              <MdOutlineClose size={30} />
+            </div>
           ) : null}
         </div>
         <div className={styles.popUpBodyContainer}>
           {React.cloneElement(children, {
-            handleClose,
-            close,
             callback,
           })}
         </div>
