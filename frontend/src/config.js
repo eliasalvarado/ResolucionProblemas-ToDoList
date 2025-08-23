@@ -1,3 +1,3 @@
-const serverHost = 'http://localhost:4000';
+const serverHost = import.meta.env.VITE_SERVERHOST;
 
 export { serverHost };

@@ -31,8 +31,7 @@ function useFetch() {
 
       setResult(res ?? true);
     } catch (ex) {
-      console.log(ex);
-      setError({ status: ex?.status, message: ex?.statusMessage ?? ex?.statusText ?? 'Ocurrió un error.' });
+      setError({ status: ex?.status, message: ex?.statusMessage ?? ex?.statusText ?? 'Ocurrió un error interno.' });
     } finally {
       setLoading(false);
     }
